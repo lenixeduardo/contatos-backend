@@ -1,11 +1,10 @@
-const { Contato } = require('../database/models');
+const { Contato,sequelize } = require('../database/models');
 
-// Usuario.findByPk(1).then(
-//     u => console.log(u.toJSON())
-// )
+// findByPk() é usado para trazer o ID que desejamos.
 
-// Usuario.findAll().then(
-//     usuarios => console.log(usuarios.map(u => u.toJSON()))
-// )
-
-Contato.create({nome: "Iago", email: "iago@dh.com" , usuarios_id: 1});
+Contato.findByPk(3, {include:['telefones','usuario']}).then(
+    c => {
+        console.log(c.toJSON());
+        sequelize.close();
+    }
+)

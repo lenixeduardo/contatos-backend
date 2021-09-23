@@ -1,7 +1,7 @@
 const { Usuario, sequelize } = require('../database/models');
 
 
-Usuario.findByPk(1, {include: 'contatos'}).then(
+Usuario.findByPk(1, {include: ['contatos','colegas']}).then(
 
 // trazer o objeto com include, trazendo a associação que criamos. Que no caso foi a contatos
     u => {
